@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Datos del Paciente</title>
+        <style>
+            html{
+                font-family: Arial;
+            }
+        </style>
+    </head>
+        <h1 style="color: white; width: 100%; border-bottom: 2px solid navy; background-color: #0F172B;"><em>CLINICA MEDICA</em></h1>
+        <h2>Informacion sobre el paciente: </h2>
+        {% for dp in datos_paciente %}	  
+        <p> <span style="color: green;"> Identificador: </span> {{ dp[0] }}</p>
+        <p> <span style="color: green;"> Apellido Paterno: </span> {{ dp[1] }} </p>
+        <p> <span style="color: green;"> Apellido Materno: </span> {{ dp[2] }} </p>
+        <p> <span style="color: green;"> Nombres: </span> {{ dp[3] }} </p>
+        <p> <span style="color: green;"> Edad: </span> {{ dp[4] }} </p>
+        <p> <span style="color: green;"> Telefono: </span> {{ dp[5] }} </p>
+        <p> <span style="color: green;"> Correo electronico: </span> {{ dp[6] }} </p>
+        <p> <span style="color: green;"> Direccion: </span> {{ dp[7] }} </p>
+        {% endfor %}
+        <div style="width: 100%; height: auto; padding: 3px; background-color: #0F172B; color: white;"><em>CLINICA MEDICA. "La clinica que resguarda tu salud y la de tus seres queridos". </em></div>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CLINICA MEDICA - SERVICIOS</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<style type="text/css">
+	</style>
+</head>
+<body id="main_body">
+	<div id="content">
+		<nav class="navbar navbar-expand-lg" style="background-color: #0F172B !important; color: #FFFFFF;">
+			<div class="container-fluid">
+			  <a class="navbar-brand" href="#" style="color: #fea116;">CLINICA MEDICA - SERVICIOS</a>
+			  <button style="-webkit-filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+				  <li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{url_for('home')}}" style="color: #FFFFFF;">INICIO</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="{{url_for('citas')}}" style="color: #FFFFFF;">CITAS MEDICAS</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="{{url_for('servicios')}}" style="color: #FFFFFF;">SERVICIOS</a>
+				  </li>
+				  <li class="nav-item">
+					  <a class="nav-link" href="{{url_for('pacientes')}}" style="color: #FFFFFF;">PACIENTES</a>
+					</li>
+				  <li class="nav-item">
+					<a class="nav-link" href="{{url_for('contacto')}}" style="color: #FFFFFF;">CONTACTANOS</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="{{url_for('login')}}" style="color: #FFFFFF; background-color: #44834a;">INGRESAR</a>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
+
+
+		<div id="carouselExample" class="carousel slide">
+		  <div class="carousel-inner">
+		    <div class="carousel-item active">
+		      <img src="../static/images/bg1.avif" class="d-block w-100" alt="...">
+		    </div>
+		    <div class="carousel-item">
+		      <img src="..." class="d-block w-100" alt="...">
+		    </div>
+		    <div class="carousel-item">
+		      <img src="..." class="d-block w-100" alt="...">
+		    </div>
+		  </div>
+		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="visually-hidden">Previous</span>
+		  </button>
+		  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="visually-hidden">Next</span>
+		  </button>
+		</div>
+
+		
+	</div>
+	<script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

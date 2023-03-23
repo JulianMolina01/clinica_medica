@@ -1,0 +1,33 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting flask-oidc
+  Downloading flask-oidc-1.4.0.tar.gz (30 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: Flask in /home/julian/.local/lib/python3.10/site-packages (from flask-oidc) (2.2.2)
+Requirement already satisfied: itsdangerous in /home/julian/.local/lib/python3.10/site-packages (from flask-oidc) (2.1.2)
+Collecting oauth2client
+  Downloading oauth2client-4.1.3-py2.py3-none-any.whl (98 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.2/98.2 KB 1.3 MB/s eta 0:00:00
+Requirement already satisfied: six in /usr/lib/python3/dist-packages (from flask-oidc) (1.16.0)
+Requirement already satisfied: Werkzeug>=2.2.2 in /home/julian/.local/lib/python3.10/site-packages (from Flask->flask-oidc) (2.2.2)
+Requirement already satisfied: click>=8.0 in /usr/lib/python3/dist-packages (from Flask->flask-oidc) (8.0.3)
+Requirement already satisfied: Jinja2>=3.0 in /home/julian/.local/lib/python3.10/site-packages (from Flask->flask-oidc) (3.1.2)
+Collecting pyasn1>=0.1.7
+  Downloading pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 77.1/77.1 KB 4.1 MB/s eta 0:00:00
+Collecting pyasn1-modules>=0.0.5
+  Downloading pyasn1_modules-0.2.8-py2.py3-none-any.whl (155 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.3/155.3 KB 4.5 MB/s eta 0:00:00
+Collecting rsa>=3.1.4
+  Downloading rsa-4.9-py3-none-any.whl (34 kB)
+Requirement already satisfied: httplib2>=0.9.1 in /usr/lib/python3/dist-packages (from oauth2client->flask-oidc) (0.20.2)
+Requirement already satisfied: pyparsing!=3.0.0,!=3.0.1,!=3.0.2,!=3.0.3,<4,>=2.4.2 in /usr/lib/python3/dist-packages (from httplib2>=0.9.1->oauth2client->flask-oidc) (2.4.7)
+Requirement already satisfied: MarkupSafe>=2.0 in /home/julian/.local/lib/python3.10/site-packages (from Jinja2>=3.0->Flask->flask-oidc) (2.1.2)
+Building wheels for collected packages: flask-oidc
+  Building wheel for flask-oidc (setup.py): started
+  Building wheel for flask-oidc (setup.py): finished with status 'done'
+  Created wheel for flask-oidc: filename=flask_oidc-1.4.0-py2.py3-none-any.whl size=17528 sha256=5d88c0dd2ca90a107c7ac01d7c7a19d2c2d74b6d07098a1c6e3c1546b09bffc5
+  Stored in directory: /home/julian/.cache/pip/wheels/41/a9/c8/89760fb3a6b6f1304c2420a58b3da4886cc63c46fb0233d57b
+Successfully built flask-oidc
+Installing collected packages: pyasn1, rsa, pyasn1-modules, oauth2client, flask-oidc
+Successfully installed flask-oidc-1.4.0 oauth2client-4.1.3 pyasn1-0.4.8 pyasn1-modules-0.2.8 rsa-4.9
