@@ -4,7 +4,19 @@ import mysql.connector
 from flask import make_response, Response
 import pdfkit 
 
+from flask_mail import Mail
+from flask_mail import Message
+
 app = Flask(__name__)
+
+app.config['MAIL_SERVER']='sandbox.smtp.mailtrap.io'
+app.config['MAIL_PORT'] = 2525
+app.config['MAIL_USERNAME'] = 'softwaretestmolina@gmail.com'
+app.config['MAIL_PASSWORD'] = 'softwaretestm'
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+mail = Mail(app)
+
 app.secret_key = 'clave_secreta'
 
 mydb = mysql.connector.connect(
@@ -158,6 +170,82 @@ def datos_paciente():
     response.headers['Content-Type'] = 'application/pdf'
     response.headers['Content-Disposition'] = 'inline;filename=datos_paciente.pdf'
     return response
+
+
+
+@app.route('/templates/citas.html')
+def citaspage():
+    if 'nombre' in session:
+
+        pacientes = []
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT * FROM citas")
+        pacientes = mycursor.fetchall()
+
+        return render_template('/citas.html', nombre=session['nombre'], pacientes = pacientes)
+    else:
+        return redirect(url_for('login'))
+@app.route('/registro_cita', methods=['GET', 'POST'])
+def registro_cita():
+    if request.method == 'POST':
+        nom = request.form['nom']
+        tel = request.form['tel']
+        email = request.form['email']
+        sintomas = request.form['sintomas']
+        fecha = request.form['fecha']
+        depto = request.form['depto']
+        gen = request.form['gen']
+        hora = request.form['hora']
+        contra = '123'
+        repite_contra = '123'
+        if contra== repite_contra:
+            mycursor = mydb.cursor()
+            mycursor.execute("INSERT INTO citas (NombreP, NTelefono, Email, Sintomas, Fecha, Depto, Genero, Hora) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (nom, tel, email, sintomas, fecha, depto, gen, hora))
+            mydb.commit()
+            return redirect(url_for('citaspage'))
+        else:
+            return render_template('/citas.html', mensaje = 'Las contraseñas no coinciden :(')
+    else:
+        return render_template('/citas.html')
+@app.route('/datos_citapaciente', methods=['GET', 'POST'])
+def datos_citapaciente():
+    id = request.args.get('id') 
+    datos_paciente = []
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * FROM citas WHERE Id =  %s" %id)
+    datos_paciente = mycursor.fetchall()
+    res = render_template('/datos_citapaciente.html', datos_paciente = datos_paciente)
+    response_string = pdfkit.from_string(res, False)
+    response = make_response(response_string)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = 'inline;filename=datos_paciente.pdf'
+    return response
+
+@app.route('/eliminar_cita/<id>/')
+def eliminar_cita(id):
+    mycursor = mydb.cursor()
+    query = f"DELETE FROM citas WHERE id = {id}"
+    mycursor.execute(query)
+    mydb.commit()
+    return redirect(url_for('citaspage'))
+
+@app.route('/enviar_mail', methods=['GET', 'POST'])
+def enviar_mail():
+    id = request.args.get('id') 
+    pacientitos = []
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT email FROM citas WHERE id =  %s" %id)
+    pacientitos = mycursor.fetchall()
+    if pacientitos is not None:
+        print(pacientitos[0])
+        msg = Message('Clinica Medica - Cita Medica', sender =   'softwaretestmolina@gmail.com', recipients = ['%s', pacientitos[0]])
+        msg.body = "Tiene usted una cita hoy en CLINICA MEDICA"
+        mail.send(msg)
+    return redirect(url_for('sentmail'))
+
+@app.route('/templates/sentmail.html')
+def sentmail():
+    return render_template('/sentmail.html')
 
 @app.route('/')
 def home():

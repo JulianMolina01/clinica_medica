@@ -17,13 +17,9 @@
 			height: 100%;
 			clear: both;
 			margin: auto;
-			font-size: 10px;
-		}
-		table{
-			font-size: 10px;
 		}
 		label{
-			color:rgb(255, 255, 255, 1.0);
+			color: black;
 			float: left;
 		}
 		td a{
@@ -44,9 +40,6 @@ filter: grayscale(1) invert(1);" class="navbar-toggler" type="button" data-bs-to
 		      <ul class="navbar-nav">
 				<li>
 					<p style="margin-top: 14px; border-right: 50px solid transparent;">BIENVENIDO <span>{{ session['nombre'] }}</span></p>
-				</li>
-				<li class="nav-item" style="margin-top: 5px;;">
-					<a  class="nav-link" href="{{url_for('citaspage')}}" style="color: #FFFFFF; background-color: #44834a; margin-right: 10px;">CITAS</a>
 				</li>
 				<li class="nav-item" style="float: right; margin-top: 5px;;">
 					<a  class="nav-link" href="{{url_for('logout')}}" style="color: #FFFFFF; background-color: #44834a;">SALIR</a>
@@ -95,102 +88,71 @@ filter: grayscale(1) invert(1);" class="navbar-toggler" type="button" data-bs-to
 				</div>
 				</div>
 			</div>
-		  </div>-->	  
-		<center><div id="modal" style="z-index: 10000; display: none; width: 100%; height: 100%; background-color: #0F172B; z-index: 1; top: 0; right: 0; align-items: center; justify-items: center;">  
-			<h3 style="color: white;">Nuevo Paciente</h3>
+		  </div>-->	
+          {% for pacientito in pacientitos %} 
+		<div style="width: 800px; height: 100%; background-color: white; z-index: 1; top: 0; right: 0; align-items: center; justify-items: center; border-right: 2px solid #d9d9d9;">  
+			<center><h3 style="color: black; border-bottom: 2px solid #d9d9d9;">Actualizar Paciente</h3>
 			<div style="background-color: transparent; padding: 3px;">		
-		<form class="col-12" action="{{url_for('registro_paciente')}}" method="POST">
-			<div class="mb-5 row">
+		<form class="col-6" action="{{url_for('actualizar')}}" method="POST">
+            <div class="mb-3 row">
+				<div class="col-sm-12" style="display: none;">
+				<input type="text" class="form-control" id="staticEmail" name="id" value="{{ pacientito[0] }}">
+				</div>
+			</div>
+			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-12 col-form-label">Apellido Paterno</label>
 				<div class="col-sm-12">
-				<input type="text" class="form-control" id="staticEmail" name="ap">
+				<input type="text" class="form-control" id="staticEmail" name="ap" value="{{ pacientito[1] }}">
 				</div>
 			</div>
-			<div class="mb-5 row">
+			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-12 col-form-label">Apellido Materno</label>
 				<div class="col-sm-12">
-				<input type="text" class="form-control" id="staticEmail" name="am">
+				<input type="text" class="form-control" id="staticEmail" name="am" value="{{ pacientito[2] }}">
 				</div>
 			</div>
-			<div class="mb-5 row">
+			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-12 col-form-label">Nombres</label>
 				<div class="col-sm-12">
-				<input type="text" class="form-control" id="staticEmail" name="nombres">
+				<input type="text" class="form-control" id="staticEmail" name="nombres" value="{{ pacientito[3] }}">
 				</div>
 			</div>
-			<div class="mb-5 row">
+			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-12 col-form-label">Edad</label>
 				<div class="col-sm-12">
-				<input type="number" min="1" max="200" class="form-control" id="staticEmail" name="edad">
+				<input type="number" min="1" max="200" class="form-control" id="staticEmail" name="edad" value="{{ pacientito[4] }}">
 				</div>
 			</div>
-			<div class="mb-5 row">
+			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-12 col-form-label">Telefono</label>
 				<div class="col-sm-12">
-				<input type="text" class="form-control" id="staticEmail" name="telefono">
+				<input type="text" class="form-control" id="staticEmail" name="telefono" value="{{ pacientito[5] }}">
 				</div>
 			</div>
-			<div class="mb-5 row">
+			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-12 col-form-label">Correo</label>
 				<div class="col-sm-12">
-				<input type="email" class="form-control" id="staticEmail" name="email">
+				<input type="email" class="form-control" id="staticEmail" name="email" value="{{ pacientito[6] }}">
 				</div>
 			</div>
-			<div class="mb-5 row">
+			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-12 col-form-label">Direccion</label>
 				<div class="col-sm-12">
-				<input type="text" class="form-control" id="staticEmail" name="dir">
+				<input type="text" class="form-control" id="staticEmail" name="dir" value="{{ pacientito[7] }}">
 				</div>
 			</div>
 			<div style="display: grid; align-items: center; justify-items: center;">
-				<input type="submit" value="Guardar" class="nav-link" style="width: 100%; color: #FFFFFF; background-color: #44834a; border: 0px; padding: 5px;">
-				<a href="{{url_for('dashboard')}}" class="nav-link" style="width: 100%; color: #FFFFFF; background-color: brown; border: 0px; padding: 5px;">Cancelar</a>
+				<input type="submit" value="Guardar Cambios" style="width: 100%; color: #FFFFFF; background-color: #44834a; border: 0px; padding: 5px;">
 			</div>
 		</form>
 		{% if mensaje %}
 		<p>{{ mensaje }}</p>
 		{% endif %}
-		</div>
-	</div></center>
-
-	<button class="nav-link" style="color: #FFFFFF; background-color: #44834a; border: 0px; padding: 5px; margin-top: 10px; margin-left: 10px;" id="btnn" onclick="document.getElementById('modal').style.display='grid';document.getElementById('table_pacientes').style.display='none';document.getElementById('btnn').style.display='none';">Nuevo Paciente</button>
-	{% if url_for('dashboard') %}
-		  <table id="table_pacientes" class="table" style="border: 1px solid gray; margin-top: 20px;">
-			<thead>
-			  <tr>
-				<th scope="col">ID</th>
-				<th scope="col">Apellido Paterno</th>
-				<th scope="col">Apellido Materno</th>
-				<th scope="col">Nombres</th>
-				<th scope="col">Edad</th>
-				<th scope="col">Telefono</th>
-				<th scope="col">Correo</th>
-				<th scope="col">Direccion</th>
-				<th scope="col">PDF</th>
-				<th scope="col">Actualizar</th>
-				<th scope="col">Eliminar</th>
-			  </tr>
-			</thead>
-			<tbody>
-			  {% for paciente in pacientes %}
-			  <tr>
-				<th scope="row">{{ paciente[0] }}</th>
-				<td> {{ paciente[1] }} </td>
-				<td> {{ paciente[2] }} </td>
-				<td> {{ paciente[3] }} </td>
-				<td> {{ paciente[4] }} </td>
-				<td> {{ paciente[5] }} </td>
-				<td> {{ paciente[6] }} </td>
-				<td> {{ paciente[7] }} </td>
-				<td> <a href="{{url_for('datos_paciente')}}?id={{paciente[0]}}"><img src="../static/images/file-earmark-pdf.svg" alt=""></a> </td>
-				<td> <a href="{{url_for('actualizar_paciente')}}?id={{paciente[0]}}"><img src="../static/images/pencil-square.svg" alt=""></a> </td>
-				<td> <a style="color: brown;" href="/eliminar_paciente/{{paciente[0]}}"><img src="../static/images/trash.svg" alt=""></a> </td>
-			</tr>
-			  {% endfor %}
-			</tbody>
-		  </table>
-		  {% endif %}
+		</div></center>
+	</div><!-- center if necessary -->
+    {% endfor %}
 		 </div>
+		 <img src="../static/images/profile.png" width="200px" height="auto" alt="paciente" style="float: right; margin-top: -45%; margin-right: 13%;">
 	</div>
 	<script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
 </body>
